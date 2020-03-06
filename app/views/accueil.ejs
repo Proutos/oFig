@@ -1,0 +1,98 @@
+<%- include ('partials/header') %>
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">O'Fig</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cart">Panier</a>
+          </li>
+          <li class="nav-item">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-ofig my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+
+  <%- include ('partials/leftMenu') %>
+
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-9">
+
+        <div class="row">
+
+
+          <% for(let figurine of listOfFigurines){ %>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+                
+                <a href="/article/<%= figurine.ID %> ">
+                  <img class="card-img-top" src="/images/<%= figurine.NAME.toLowerCase() %>.png" alt="">
+                  <div class="badge-category badge badge-pill badge-<%= figurine.CATEGORY.toLowerCase() %>"><%= figurine.CATEGORY %></div>
+                </a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="/article/<%= figurine.ID %>"><%= figurine.NAME %></a>
+                  </h4>
+                  <h5><%= figurine.PRICE %></h5>
+                    <p class="card-text"><%= figurine.DESCRIPTION %></p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                  <a href="/cart" class="link-add-cart">+ Ajouter au panier</a>
+                </div>
+              </div>
+            </div>
+            <% } %>
+
+
+          
+
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; O'Fig 2019 - Toutes les images sont sous Copyright SquareEnix</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+<%- include ('partials/footer') %>
